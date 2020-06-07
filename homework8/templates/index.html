@@ -1,0 +1,24 @@
+[[extend 'layout.html']]
+
+<div id="vue">
+  <section class="section">
+    <div class="container">
+      [[=handler]]
+    </div>
+  </section>
+</div>
+
+[[block page_scripts]]
+<!-- Loads the index-specific js for Vue -->
+
+<script src="components/noteshandler/noteshandler.js"></script>
+
+<script>
+  var app = new Vue({
+    el: "#vue",
+    data: {},
+  })
+
+</script>
+
+[[end]]

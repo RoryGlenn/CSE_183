@@ -1,0 +1,99 @@
+<!-- 
+    
+HW8
+
+5. add a trash icon that will delete each note
+6. should clicking off the note make it enter a different state (the normal unedited state)?
+
+
+DONE
+1. when new note is created, I can't edit it, I can only edit the old note.
+2. when star is clicked, all note info is deleted
+3. If user makes notes first then gives a note title, all of the note body is deleted
+4. Use the correct "add note" button icon
+7. when new note is created, it doesnt save the body of the old note
+8. color boxs arent showing up in text boxs (general CSS doesn't seem to be working 
+
+-->
+
+
+<div>
+
+    <button @click="create" class="add-note button set_color(note, note.id, 5)">
+        <i class="fa fa-plus"></i>
+    </button>
+    <div class="columns is-multiline notes-container">
+        <div v-for="note in notes" :class="color_class(note.color)" class="column is-3 note">
+
+            <div v-if="flag === note.id">
+                <div class="level">
+                    <div class="level-left">
+                        <input class="input" type="text" v-model="note.title"
+                            v-on:keyup="edit_key(note._idx, 'title', note.title)">
+                    </div>
+
+                    <div class="level-right">
+                        <i style="cursor: pointer" class="fa fa-star" :class="note.has_star ? 'starred': ''"
+                            @click="edit_key(note._idx, 'has_star', !note.has_star)"></i>
+                    </div>
+
+                </div>
+
+                <!-- Add a stylesheet or use a normal button -->
+                <div class="list-switch field">
+                    <input id="is-list" type="checkbox" class="switch" checked="note.is_list" v-model="note.is_list">
+                    <label for="is-list">Toggle List</label>
+                </div>
+                <textarea class="textarea" v-on:keyup="handle_note_change($event, note._idx)"
+                    :value="format_note_text(note.content, note._idx)"></textarea>
+            </div>
+
+
+            <div id="not-edit-content" v-else @click="toggle_edit(true, note._idx); flag = note.id">
+
+                <div class="level">
+                    <div class="level-left">
+                        <p class="level-item title is-5">
+                            {{note.title}}
+                        </p>
+                    </div>
+
+                    <div class="level-right">
+                        <i class="fa fa-star" :class="note.has_star ? 'starred': ''"></i>
+                    </div>
+                </div>
+
+                <span class="note-content">
+                    {{format_note_text(note.content, note._idx)}}
+                </span>
+            </div>
+
+            <!-- Set color
+            0: pastel-blue
+            1: pastel-purple
+            2: pastel-red
+            3: pastel-green
+            4: pastel-yellow -->
+            <div class="color-pallete" > 
+                <div button @click="set_color(note, note.id, 0)" class="color-block pastel-blue" ></div>
+                <div button @click="set_color(note, note.id, 1)" class="color-block pastel-purple" ></div>
+                <div button @click="set_color(note, note.id, 2)" class="color-block pastel-red" ></div>
+                <div button @click="set_color(note, note.id, 3)" class="color-block pastel-green" ></div>
+                <div button @click="set_color(note, note.id, 4)" class="color-block pastel-yellow" ></div>
+                <div button @click="set_color(note, note.id, 5)" class="color-block pastel-white" ></div>
+
+            </div>
+
+
+            <!-- <div v-if="!note.edit">
+                <p class="title is-5">
+                    {{note.title}}
+                </p>
+                <span class="note-content">
+                    {{format_note_text(note.content, note._idx)}}
+                </span>
+            </div> -->
+
+        </div>
+    </div>
+</div>

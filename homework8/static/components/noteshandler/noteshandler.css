@@ -1,0 +1,81 @@
+.instructions {
+    font-size: 13px;
+}
+
+.add-note {
+    height: 40px;
+    line-height: 40px;
+    background-color: #17a97e;
+    font-size: 25px;
+    color: white;
+}
+
+.notes-container {
+    justify-content: center;
+}
+
+
+.note {
+    min-height: 300px;
+    border: 1px solid black;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: -4px 10px 19px -5px rgba(0,0,0,0.63);
+}
+
+#note-edit_content {
+    height: 100%;
+    width: 100%;
+}
+
+.note-content {
+    white-space: pre-line;
+}
+
+.complete-wrap {
+    width: 100%;
+    display: flex;
+} 
+
+.list-switch {
+    margin: 10px auto;
+}
+
+.pastel-blue {
+    background-color: #0076fd;
+}
+
+.pastel-purple {
+    background-color: #e100ff;
+}
+
+.pastel-red {
+    background-color: #ff0000;
+}
+
+.pastel-green {
+    background-color: #1aeb1a;
+}
+
+.pastel-yellow {
+    background-color: #fbff00;
+}
+
+.pastel-white {
+    background-color: #ffffff;
+}
+
+.color-pallete {
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.color-block {
+    margin: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid gray;
+    display: inline-block;
+    cursor: pointer;
+}
